@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 async function getPost(id) {
   const response = await fetch(`https://dummyjson.com/posts/${id}`);
@@ -8,6 +9,10 @@ async function getPost(id) {
 
 const Page = async ({ params }) => {
   const post = await getPost(params.id);
+
+  if (!post.title) {
+    return notFound();
+  }
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-between px-24 w-full">
