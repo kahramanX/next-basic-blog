@@ -10,19 +10,19 @@ const Page = async ({ params }) => {
   const post = await getPost(params.id);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between px-24">
-      <div className="relative w-full h-1/3">
+    <div className="flex min-h-screen flex-col items-center justify-between px-24 w-full">
+      <div className="relative w-full min-h-screen mb-10">
         <Image
-          className="rounded-xl object-cover "
+          className="rounded-xl object-cover"
           src={`https://picsum.photos/960/400?random=${post.id}`}
           alt="Blog Image"
-          fill={true}
+          fill
         />
       </div>
       <div>
         <h3 className="font-bold">{post.title}</h3>
         <p className="font-extralight text-gray-400 ">{post.body}</p>
-      </div>{" "}
+      </div>
     </div>
   );
 };
